@@ -1,52 +1,15 @@
+/**
+ * PersonServiceImpl.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
+
 package com.journaldev.jaxws.service;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import com.journaldev.jaxws.beans.Person;
-
-public class PersonServiceImpl implements PersonService {
-
-	private static Map<Integer, Person> persons = new HashMap<Integer, Person>();
-
-	@Override
-	public boolean addPerson(Person p) {
-		// TODO Auto-generated method stub
-		if (persons.get(p.getId()) != null) {
-			return false;
-		}
-		persons.put(p.getId(), p);
-		return true;
-	}
-
-	@Override
-	public boolean deletePerson(int id) {
-		if (persons.get(id) == null)
-			return false;
-		persons.remove(id);
-		return true;
-	}
-
-	@Override
-	public Person getPerson(int id) {
-		// TODO Auto-generated method stub
-		return persons.get(id);
-	}
-
-	@Override
-	public Person[] getAllPersons() {
-		// TODO Auto-generated method stub
-		Set<Integer> ids = persons.keySet();
-		Person[] p = new Person[ids.size()];
-
-		int i = 0;
-		for (Integer id : ids) {
-			p[i] = persons.get(id);
-			i++;
-		}
-
-		return p;
-	}
-
+public interface PersonServiceImpl extends java.rmi.Remote {
+    public boolean deletePerson(int id) throws java.rmi.RemoteException;
+    public com.journaldev.jaxws.beans.Person getPerson(int id) throws java.rmi.RemoteException;
+    public com.journaldev.jaxws.beans.Person[] getAllPersons() throws java.rmi.RemoteException;
+    public boolean addPerson(com.journaldev.jaxws.beans.Person p) throws java.rmi.RemoteException;
 }
